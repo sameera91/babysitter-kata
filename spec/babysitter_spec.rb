@@ -35,6 +35,23 @@ describe Babysitter do
       end
     end
 
+    describe '#valid_time' do
+      it 'makes sure that the time is a full hour and is between 1 and 12' do
+        babysitter = Babysitter.new
+        expect(babysitter.valid_time("6:40")).to eq(false)
+        expect(babysitter.valid_time("14:00")).to eq(false)
+        expect(babysitter.valid_time("7:00")).to eq(true)
+      end
+    end
+
+    describe '#valid_start_time' do
+      it 'makes sure that the time is valid' do
+        babysitter = Babysitter.new
+        expect(babysitter.valid_time("3:00")).to eq(false)
+        expect(babysitter.valid_time("5:00")).to eq(true)
+      end
+    end
+
     describe '#enter_hours' do 
       it 'allows the user to enter the hours and displays the total wage' do
         babysitter = Babysitter.new
