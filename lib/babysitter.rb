@@ -17,4 +17,10 @@ class Babysitter
     return wage
   end
 
+  def midnight_to_end(endtime)
+    endtime = endtime.match(/([^:]+)/)[0].to_i
+    hours = endtime
+    wage = 16 * hours
+    return wage
+  end
 end
