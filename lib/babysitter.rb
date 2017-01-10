@@ -12,9 +12,9 @@ class Babysitter
   def enter_hours
     puts "Please enter start time"
     start_time = gets.strip
-    puts = "Please enter bedtime"
+    puts "Please enter bedtime"
     bedtime = gets.strip
-    input = "Please enter endtime"
+    puts "Please enter endtime"
     endtime = gets.strip
 
     start_to_bedtime(start_time, bedtime)
