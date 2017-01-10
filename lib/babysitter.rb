@@ -6,6 +6,23 @@ class Babysitter
     @wage1 = 0
     @wage2 = 0
     @wage3 = 0
+    @total_wage = 0
+  end
+
+  def enter_hours
+    puts "Please enter start time"
+    start_time = gets.strip
+    puts = "Please enter bedtime"
+    bedtime = gets.strip
+    input = "Please enter endtime"
+    endtime = gets.strip
+
+    start_to_bedtime(start_time, bedtime)
+    bedtime_to_midnight(bedtime)
+    midnight_to_end(endtime)
+    add_total
+
+    puts "Your total wage is $" + @total_wage.to_s
   end
 
   def start_to_bedtime(start_time, bedtime)
@@ -31,7 +48,7 @@ class Babysitter
   end
 
   def add_total
-    total_wage = @wage1 + @wage2 + @wage3
-    return total_wage
+    @total_wage = @wage1 + @wage2 + @wage3
+    return @total_wage
   end
 end
