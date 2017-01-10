@@ -10,16 +10,52 @@ class Babysitter
   end
 
   def enter_hours
-    puts "Please enter start time between 5pm and 12am"
+    puts "Please enter start time between 5pm and 12am (e.g. 6:00)"
     start_time = gets.strip
-    puts "Please enter a bedtime between 6pm and 11pm"
-    bedtime = gets.strip
-    puts "Please enter an endtime between 12am and 4pm"
-    endtime = gets.strip
 
-    start_to_bedtime(start_time, bedtime)
-    bedtime_to_midnight(bedtime)
-    midnight_to_end(endtime)
+    while !valid_time_format(start_time) ||  !valid_full_hour(start_time) || !valid_start_time(start_time)
+      if !valid_time_format(start_time)
+        puts "Must be a valid time format (e.g. 5:00). Try again."
+      elsif !valid_full_hour(start_time)
+        puts "Must be a full hour. Try again."
+      elsif !valid_start_time(start_time)
+        puts "Must be a time between 5pm and 12am. Try again."
+      end
+      start_time = gets.strip
+    end
+
+
+    puts "Please enter a bedtime between 6pm and 11pm"
+    bed_time = gets.strip
+
+    while !valid_time_format(bed_time) ||  !valid_full_hour(bed_time) || !valid_bed_time(bed_time)
+      if !valid_time_format(bed_time)
+        puts "Must be a valid time format (e.g. 7:00). Try again."
+      elsif !valid_full_hour(bed_time)
+        puts "Must be a full hour. Try again."
+      elsif !valid_bed_time(bed_time)
+        puts "Must be a time between 6pm and 11pm. Try again."
+      end
+      bed_time = gets.strip
+    end
+
+    puts "Please enter an endtime between 12am and 4pm"
+    end_time = gets.strip
+
+    while !valid_time_format(end_time) ||  !valid_full_hour(end_time) || !valid_end_time(end_time)
+      if !valid_time_format(end_time)
+        puts "Must be a valid time format (e.g. 1:00). Try again."
+      elsif !valid_full_hour(end_time)
+        puts "Must be a full hour. Try again."
+      elsif !valid_end_time(end_time)
+        puts "Must be a time between 12am and 4pm. Try again."
+      end
+      end_time = gets.strip
+    end
+
+    start_to_bedtime(start_time, bed_time)
+    bedtime_to_midnight(bed_time)
+    midnight_to_end(end_time)
     add_total
 
     puts "Your total wage is $" + @total_wage.to_s
