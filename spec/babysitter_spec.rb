@@ -45,10 +45,26 @@ describe Babysitter do
     end
 
     describe '#valid_start_time' do
-      it 'makes sure that the time is valid' do
+      it 'makes sure that the start time is no earlier than 5:00PM' do
         babysitter = Babysitter.new
         expect(babysitter.valid_start_time("3:00")).to eq(false)
         expect(babysitter.valid_start_time("5:00")).to eq(true)
+      end
+    end
+
+    describe '#valid_bed_time' do
+      it 'makes sure that the bed time is between 6pm and 11pm' do
+        babysitter = Babysitter.new
+        expect(babysitter.valid_bed_time("7:00")).to eq(true)
+        expect(babysitter.valid_bed_time("3:00")).to eq(false)
+      end
+    end
+
+    describe '#valid_end_time' do
+      it 'makes sure that the end time is no later than 4:00AM' do
+        babysitter = Babysitter.new
+        expect(babysitter.valid_end_time("6:00")).to eq(false)
+        expect(babysitter.valid_end_time("3:00")).to eq(true)
       end
     end
 
