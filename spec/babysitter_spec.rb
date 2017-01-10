@@ -47,8 +47,8 @@ describe Babysitter do
     describe '#valid_start_time' do
       it 'makes sure that the time is valid' do
         babysitter = Babysitter.new
-        expect(babysitter.valid_time("3:00")).to eq(false)
-        expect(babysitter.valid_time("5:00")).to eq(true)
+        expect(babysitter.valid_start_time("3:00")).to eq(false)
+        expect(babysitter.valid_start_time("5:00")).to eq(true)
       end
     end
 
