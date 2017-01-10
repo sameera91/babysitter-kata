@@ -1,3 +1,6 @@
+require_relative '../lib/babysitter.rb'
+require 'pry'
+
 describe Babysitter do
   describe 'lib/babysitter.rb' do
     describe '#start_to_bedtime' do
