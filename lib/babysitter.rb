@@ -25,11 +25,21 @@ class Babysitter
     puts "Your total wage is $" + @total_wage.to_s
   end
 
-  def valid_time(time)
+  def valid_time_format(time)
+    valid = true
+    if time.match('\:(.*)') === nil
+      valid = false
+    elsif time.match(/([^:]+)/)[0].to_i > 12 || time.match(/([^:]+)/)[0].to_i < 1
+      valid = false
+    end
+    return valid
+  end
+
+  def valid_full_hour(time)
     minutes = time.match('\:(.*)')[1].to_i
     hour = time.match(/([^:]+)/)[0].to_i
     valid = true
-    if minutes != 00 || hour > 12 || hour < 1
+    if minutes != 0 || hour > 12 || hour < 1
       valid = false
     end
     return valid
@@ -56,12 +66,11 @@ class Babysitter
   def valid_end_time(time)
     hour = time.match(/([^:]+)/)[0].to_i
     valid = true
-    if hour > 12 || (hour >= 5 && hour < 11)
+    if hour > 12 || (hour >= 5 && hour <= 11)
       valid = false
     end
     return valid
   end
-
 
   def start_to_bedtime(start_time, bedtime)
     start_time = start_time.match(/([^:]+)/)[0].to_i
