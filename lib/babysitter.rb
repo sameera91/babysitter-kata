@@ -63,12 +63,13 @@ class Babysitter
 
   def valid_time_format(time)
     valid = true
-    if time.match('\:(.*)') === nil
+    time = time.match(/([^:]+)/)
+    if time === nil
       valid = false
-    elsif time.match(/([^:]+)/)[0].to_i > 12 || time.match(/([^:]+)/)[0].to_i < 1
+    elsif time[0].to_i > 12 || time[0].to_i < 1
       valid = false
     end
-    return valid
+    valid
   end
 
   def valid_full_hour(time)
@@ -78,7 +79,7 @@ class Babysitter
     if minutes != 0 || hour > 12 || hour < 1
       valid = false
     end
-    return valid
+    valid
   end
 
   def valid_start_time(time)
@@ -87,7 +88,7 @@ class Babysitter
     if hour < 5 || hour > 11
       valid = false
     end
-    return valid
+    valid
   end
 
   def valid_bed_time(time)
@@ -96,7 +97,7 @@ class Babysitter
     if hour < 6 || hour > 11
       valid = false
     end
-    return valid
+    valid
   end
 
   def valid_end_time(time)
@@ -105,7 +106,7 @@ class Babysitter
     if hour > 12 || (hour >= 5 && hour <= 11)
       valid = false
     end
-    return valid
+    valid
   end
 
   def start_to_bedtime(start_time, bedtime)
@@ -113,25 +114,25 @@ class Babysitter
     bedtime = bedtime.match(/([^:]+)/)[0].to_i
     hours = bedtime - start_time
     @wage1 = 12 * hours
-    return @wage1
+    @wage1
   end
 
   def bedtime_to_midnight(bedtime)
     bedtime = bedtime.match(/([^:]+)/)[0].to_i
     hours = MIDNIGHT - bedtime
     @wage2 = 8 * hours
-    return @wage2
+    @wage2
   end
 
   def midnight_to_end(endtime)
     endtime = endtime.match(/([^:]+)/)[0].to_i
     hours = endtime
     @wage3 = 16 * hours
-    return @wage3
+    @wage3
   end
 
   def add_total
     @total_wage = @wage1 + @wage2 + @wage3
-    return @total_wage
+    @total_wage
   end
 end
