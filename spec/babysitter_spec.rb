@@ -35,12 +35,21 @@ describe Babysitter do
       end
     end
 
-    describe '#valid_time' do
+    describe '#valid_time_format' do
+      it 'makes sure that the time is in a valid format' do
+        babysitter = Babysitter.new
+        expect(babysitter.valid_time_format("8:00")).to eq(true)
+        expect(babysitter.valid_time_format("44")).to eq(false)
+        expect(babysitter.valid_time_format("56:00")).to eq(false)
+      end
+    end
+
+    describe '#valid_full_hour' do
       it 'makes sure that the time is a full hour and is between 1 and 12' do
         babysitter = Babysitter.new
-        expect(babysitter.valid_time("6:40")).to eq(false)
-        expect(babysitter.valid_time("14:00")).to eq(false)
-        expect(babysitter.valid_time("7:00")).to eq(true)
+        expect(babysitter.valid_full_hour("6:40")).to eq(false)
+        expect(babysitter.valid_full_hour("14:00")).to eq(false)
+        expect(babysitter.valid_full_hour("7:00")).to eq(true)
       end
     end
 
