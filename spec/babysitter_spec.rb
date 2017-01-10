@@ -16,5 +16,12 @@ describe Babysitter do
         expect(babysitter.bedtime_to_midnight("10:00")).to eq(16)
       end
     end
+
+    describe '#bedtime_to_end' do
+      it 'returns the total wage from midnight to end of job' do
+        babysitter = Babysitter.new
+        expect(babysitter.midnight_to_end("3:00")).to eq(48)
+      end
+    end
   end
 end
