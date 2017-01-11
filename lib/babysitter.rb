@@ -25,7 +25,7 @@ class Babysitter
     end
 
 
-    puts "Please enter a bedtime between 6pm and 11pm"
+    puts "Please enter a bedtime between 6pm and 11pm (e.g. 7:00)"
     bed_time = gets.strip
 
     while !valid_time_format(bed_time) ||  !valid_full_hour(bed_time) || !valid_bed_time(bed_time)
@@ -39,7 +39,7 @@ class Babysitter
       bed_time = gets.strip
     end
 
-    puts "Please enter an endtime between 12am and 4pm"
+    puts "Please enter an endtime between 12am and 4pm (e.g. 1:00)"
     end_time = gets.strip
 
     while !valid_time_format(end_time) ||  !valid_full_hour(end_time) || !valid_end_time(end_time)
