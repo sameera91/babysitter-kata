@@ -53,9 +53,9 @@ class Babysitter
       end_time = gets.strip
     end
 
-    start_to_bedtime(start_time, bed_time)
-    bedtime_to_midnight(bed_time)
-    midnight_to_end(end_time)
+    start_to_bedtime_wage(start_time, bed_time)
+    bedtime_to_midnight_wage(bed_time)
+    midnight_to_end_wage(end_time)
     add_total
 
     puts "Your total wage is $" + @total_wage.to_s
@@ -109,7 +109,7 @@ class Babysitter
     valid
   end
 
-  def start_to_bedtime(start_time, bedtime)
+  def start_to_bedtime_wage(start_time, bedtime)
     start_time = start_time.match(/([^:]+)/)[0].to_i
     bedtime = bedtime.match(/([^:]+)/)[0].to_i
     hours = bedtime - start_time
@@ -117,14 +117,14 @@ class Babysitter
     @wage1
   end
 
-  def bedtime_to_midnight(bedtime)
+  def bedtime_to_midnight_wage(bedtime)
     bedtime = bedtime.match(/([^:]+)/)[0].to_i
     hours = MIDNIGHT - bedtime
     @wage2 = 8 * hours
     @wage2
   end
 
-  def midnight_to_end(endtime)
+  def midnight_to_end_wage(endtime)
     endtime = endtime.match(/([^:]+)/)[0].to_i
     hours = endtime
     @wage3 = 16 * hours

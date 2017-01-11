@@ -3,36 +3,36 @@ require 'pry'
 
 describe Babysitter do
   describe 'lib/babysitter.rb' do
-    describe '#start_to_bedtime' do
+    describe '#start_to_bedtime_wage' do
       it 'returns the total wage from start to bedtime' do
         babysitter = Babysitter.new
-        expect(babysitter.start_to_bedtime("6:00", "10:00")).to eq(48)
-        expect(babysitter.start_to_bedtime("5:00", "11:00")).to eq(72)
+        expect(babysitter.start_to_bedtime_wage("6:00", "10:00")).to eq(48)
+        expect(babysitter.start_to_bedtime_wage("5:00", "11:00")).to eq(72)
       end
     end
 
-    describe '#bedtime_to_midnight' do
+    describe '#bedtime_to_midnight_wage' do
       it 'returns the total wage from bedtime to midnight' do
         babysitter = Babysitter.new
-        expect(babysitter.bedtime_to_midnight("10:00")).to eq(16)
-        expect(babysitter.bedtime_to_midnight("9:00")).to eq(24)
+        expect(babysitter.bedtime_to_midnight_wage("10:00")).to eq(16)
+        expect(babysitter.bedtime_to_midnight_wage("9:00")).to eq(24)
       end
     end
 
-    describe '#bedtime_to_end' do
+    describe '#bedtime_to_end_wage' do
       it 'returns the total wage from midnight to end of job' do
         babysitter = Babysitter.new
-        expect(babysitter.midnight_to_end("3:00")).to eq(48)
-        expect(babysitter.midnight_to_end("2:00")).to eq(32)
+        expect(babysitter.midnight_to_end_wage("3:00")).to eq(48)
+        expect(babysitter.midnight_to_end_wage("2:00")).to eq(32)
       end
     end
 
     describe '#add_total' do 
       it 'returns the total wage from start to end' do 
         babysitter = Babysitter.new
-        wage1 = babysitter.start_to_bedtime("6:00", "10:00")
-        wage2 = babysitter.bedtime_to_midnight("10:00")
-        wage3 = babysitter.midnight_to_end("3:00")
+        wage1 = babysitter.start_to_bedtime_wage("6:00", "10:00")
+        wage2 = babysitter.bedtime_to_midnight_wage("10:00")
+        wage3 = babysitter.midnight_to_end_wage("3:00")
         total_wage = wage1 + wage2 + wage3
         expect(babysitter.add_total()).to eq(total_wage)
       end
