@@ -7,6 +7,7 @@ describe Babysitter do
       it 'returns the total wage from start to bedtime' do
         babysitter = Babysitter.new
         expect(babysitter.start_to_bedtime("6:00", "10:00")).to eq(48)
+        expect(babysitter.start_to_bedtime("5:00", "11:00")).to eq(72)
       end
     end
 
@@ -14,6 +15,7 @@ describe Babysitter do
       it 'returns the total wage from bedtime to midnight' do
         babysitter = Babysitter.new
         expect(babysitter.bedtime_to_midnight("10:00")).to eq(16)
+        expect(babysitter.bedtime_to_midnight("9:00")).to eq(24)
       end
     end
 
@@ -21,6 +23,7 @@ describe Babysitter do
       it 'returns the total wage from midnight to end of job' do
         babysitter = Babysitter.new
         expect(babysitter.midnight_to_end("3:00")).to eq(48)
+        expect(babysitter.midnight_to_end("2:00")).to eq(32)
       end
     end
 
